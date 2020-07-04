@@ -1,0 +1,72 @@
+{
+  "name": "@ltipton/hogshead",
+  "version": "0.0.1",
+  "description": "Manage Keg containers in the browser",
+  "main": "index.js",
+  "author": "Lance Tipton <lancetipton04@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "url": "ssh://git@github.com/lancetipton/hogshead.git",
+    "type": "git"
+  },
+  "scripts": {
+    "api": "nodemon --watch ./server --watch ./config --exec 'node ./server/index.js'",
+    "build:web": "cd node_modules/keg-core; yarn build:web",
+    "clean": "cd node_modules/keg-core; yarn clean",
+    "clean:full": "yarn clean; yarn clean:nm; yarn install",
+    "clean:nm": "rimraf ./yarn.lock; rimraf ./package.lock; rimraf node_modules",
+    "clean:rn": "yarn keg clean:rn",
+    "start": "yarn web",
+    "setup": "yarn install; cd node_modules/keg-core; yarn postinstall",
+    "web": "cd node_modules/keg-core; yarn web",
+    "keg": "cd node_modules/keg-core; yarn",
+    "format:eslint": "eslint --config ./configs/eslintrc.config.js . --fix --quiet",
+    "format:prettier": "prettier --config ./configs/prettier.config.js --ignore-path .eslintignore --write '**/*.{js,jsx}'",
+    "format": "yarn format:prettier && yarn format:eslint",
+    "eslint:watch": "onchange '**/*.{js,jsx}' -- eslint --config ./configs/eslintrc.config.js {{changed}} --fix"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@ltipton/jsutils": "^5.0.0",
+    "CBuffer": "^2.1.0",
+    "axios": "0.19.2",
+    "babel-eslint": "10.1.0",
+    "body-parser": "1.10.2",
+    "byline": "^5.0.0",
+    "dockerode": "^3.2.0",
+    "eslint": "7.1.0",
+    "eslint-plugin-jest": "23.13.2",
+    "eslint-plugin-react": "7.20.0",
+    "eslint-plugin-react-native": "3.8.1",
+    "express": "4.11.1",
+    "husky": "4.2.5",
+    "keg-core": "https://github.com/simpleviewinc/keg-core.git#master",
+    "lint-staged": "10.2.10",
+    "module-alias": "^2.2.2",
+    "moment": "^2.27.0",
+    "nodemon": "^2.0.4",
+    "prettier": "2.0.5",
+    "rimraf": "^3.0.1",
+    "socket.io": "^2.3.0",
+    "untildify": "^4.0.0"
+  },
+  "_moduleAliases": {
+    "KegApp": "src",
+    "KegRoot": ".",
+    "KegConfigs": "configs",
+    "KegServer": "server",
+    "KegSControl": "server/controllers",
+    "KegSLibs": "server/libs",
+    "KegSRoutes": "server/routes",
+    "KegSUtils": "server/utils"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged --config ./configs/lint-staged.config.js"
+    }
+  }
+}

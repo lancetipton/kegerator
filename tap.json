@@ -1,0 +1,27 @@
+{
+  "name": "hogshead",
+  "displayName": "Hogs-Head",
+  "keg": {
+    "routes": {
+      "/": "RootContainer"
+    },
+    "tapResolver": {
+      "paths": {
+        "tapSrc": "./src"
+      }
+    },
+    "versions": {
+      "development": "1.0.0",
+      "production": "1.0.0",
+      "qa": "1.0.0",
+      "staging": "1.0.0"
+    },
+    "paths": {
+      "buildConfig": "configs/build.config.js"
+    }
+  },
+  "expo": {
+    "name": "tap-hogshead",
+    "slug": "tap-hogshead"
+  }
+}
