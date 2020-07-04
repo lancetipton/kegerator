@@ -1,8 +1,10 @@
 import React from 'react'
-import { withAppHeader } from 'SVComponents'
-import { SessionsContainer } from 'SVContainers'
-import { displayName } from 'SVConfig'
+import { View, Text } from 'SVComponents'
 
-export const RootContainer = withAppHeader(displayName, props => {
-  return <SessionsContainer />
-})
+export const RootContainer = props => {
+  return (
+    <View>
+      <Text>Kegerator - Docker Container Management</Text>
+    </View>
+  )
+}

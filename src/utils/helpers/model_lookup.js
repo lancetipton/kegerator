@@ -1,4 +1,4 @@
-import * as Models from 'KegModels'
+import * as Models from 'SVModels'
 
 export const modelLookup = type => {
   return Models[type]

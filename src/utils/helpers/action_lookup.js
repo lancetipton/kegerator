@@ -1,4 +1,4 @@
-import * as Actions from 'KegActions'
+import * as Actions from 'SVActions'
 import { capitalize, isFunc } from 'jsutils'
 
 export const actionLookup = (action, type, ...props) => {
