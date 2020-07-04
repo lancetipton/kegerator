@@ -1,4 +1,4 @@
 export const appState = {
-  appName: 'HogsHead',
+  appName: 'Kegerator',
   initialized: false,
 }

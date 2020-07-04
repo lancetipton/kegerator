@@ -1,5 +1,5 @@
 {
-  "name": "hogshead",
+  "name": "kegerator",
   "displayName": "Hogs-Head",
   "keg": {
     "routes": {
@@ -21,7 +21,7 @@
     }
   },
   "expo": {
-    "name": "tap-hogshead",
-    "slug": "tap-hogshead"
+    "name": "tap-kegerator",
+    "slug": "tap-kegerator"
   }
 }

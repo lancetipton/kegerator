@@ -1,5 +1,5 @@
 {
-  "name": "@ltipton/hogshead",
+  "name": "@ltipton/kegerator",
   "version": "0.0.1",
   "description": "Manage Keg containers in the browser",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
-    "url": "ssh://git@github.com/lancetipton/hogshead.git",
+    "url": "ssh://git@github.com/lancetipton/kegerator.git",
     "type": "git"
   },
   "scripts": {

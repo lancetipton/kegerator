@@ -148,3 +148,4 @@ typings/
 *.tgz
 .yarn-integrity
 .env
+temp

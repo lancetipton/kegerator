@@ -5,7 +5,7 @@ const config = require('../configs/server.config')
 const { connect, ...routers } = require('./routers')
 const { checkCall, setLogs } = require('@ltipton/jsutils')
 
-setLogs(process.env.LOG, 'log', '[ HOGS-HEAD ]')
+setLogs(process.env.LOG, 'log', '[ KEGERATOR ]')
 app.__config = config
 
 checkCall(() => {
