@@ -3,26 +3,29 @@ import { View, Text } from 'SVComponents'
 import { withAppHeader, Tabbar } from 'SVComponents'
 import { displayName } from 'SVConfig'
 
-const TabScreen = props => (
-  <View>
-    <Text>{ props.title || "I am a vew" }</Text>
-  </View>
-)
+const TabScreen = props => {
+  return (
+    <View>
+      <Text>{ props.title || "I am a vew" }</Text>
+    </View>
+  )
+  
+}
 
 const tabs = [
   {
     title: 'Containers',
-    id: 'Containers',
+    id: 0,
     screen: TabScreen,
   },
   {
     title: 'Images',
-    id: 'Images',
+    id: 1,
     screen: TabScreen,
   },
   {
     title: 'Syncs',
-    id: 'Syncs',
+    id: 2,
     screen: TabScreen,
   },
 ]

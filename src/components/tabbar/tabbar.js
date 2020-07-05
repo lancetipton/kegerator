@@ -1,10 +1,11 @@
 import React, { isValidElement, useMemo, useCallback, useState } from 'react'
 import { Tab } from './tab'
 import { TabView } from './tabview'
-import { checkCall } from '@ltipton/jsutils'
+import { checkCall, isFunc, mapColl } from '@ltipton/jsutils'
 // import { useThemePath } from 'SVHooks'
 import { useTheme } from '@simpleviewinc/re-theme'
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
+import { isValidComponent } from 'SVUtils/validate'
 
 const barStyles = {
   main: {
@@ -45,13 +46,10 @@ const barStyles = {
       container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
       },
       text: {
-        
-      },
-      wrap: {
-        
+        textAlign: 'center'
       },
       icon: {
         before: {
@@ -81,10 +79,9 @@ const Bar = ({ children, styles }) => {
 // tab = { component, key, id, screen, title, icon }
 const Tabs = ({ activeIndex, tabs, styles, onTabSelect }) => {
   return useMemo(() => {
-    return tabs.map((tab, index) => {
+    return mapColl(tabs, (index, tab) => {
       const { Component, component, id, key, ...tabProps } = tab
       const keyId = key || id || index
-      
       return (
         <Tab
           key={ keyId }
@@ -99,6 +96,13 @@ const Tabs = ({ activeIndex, tabs, styles, onTabSelect }) => {
       )
     })
   }, [ activeIndex, tabs, styles ])
+}
+
+const ActiveScreen = ({ tab, styles }) => {
+  const Screen = tab && (tab.Screen || tab.screen)
+  return isValidComponent(Screen)
+    ? (<Screen { ...tab } styles={ styles } />)
+    : null
 }
 
 export const Tabbar = props => {
@@ -138,9 +142,6 @@ export const Tabbar = props => {
 
   }, [ tabs ])
 
-  const ActiveScreen = active &&
-    isValidElement(active.Screen || active.screen) && 
-    (active.Screen || active.screen)
 
   const TabComponents = []
   const addMethod = location === 'bottom' ? 'unshift' : 'push'
@@ -171,7 +172,7 @@ export const Tabbar = props => {
       onScroll={ scrollEvent }
       styles={ barStyles }
     >
-      { ActiveScreen && (<ActiveScreen { ...active } styles={ barStyles } />)}
+      <ActiveScreen tab={ active } styles={ barStyles } />
     </TabView>
   )
 
