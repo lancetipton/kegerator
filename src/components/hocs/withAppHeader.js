@@ -15,7 +15,7 @@ import { isStandalonePWA, isNative } from 'SVUtils/platform'
 export const withAppHeader = (title, Component) => {
   const AppHeaderHoc = props => {
     return (
-      <View style={{ height: '100vh' }} >
+      <>
         <View>
           <AppHeader
             shadow
@@ -33,7 +33,7 @@ export const withAppHeader = (title, Component) => {
           />
         </View>
         <Component {...props} />
-      </View>
+      </>
     )
   }
 

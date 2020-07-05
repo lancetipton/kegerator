@@ -63,10 +63,5 @@
     "KegSLibs": "server/libs",
     "KegSRoutes": "server/routes",
     "KegSUtils": "server/utils"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged --config ./configs/lint-staged.config.js"
-    }
   }
 }

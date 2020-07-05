@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { theme } from 'SVTheme'
-import { SafeAreaView, StatusBar } from 'react-native'
+import { StatusBar } from 'react-native'
 import {
   ReThemeProvider,
   getDefaultTheme,
@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import { getStore } from 'SVStore'
 import { initAppAction } from 'SVActions'
 import { Router } from 'SVComponents/router'
+import { SafeAreaView } from 'SVComponents'
 import { checkCall, get } from 'jsutils'
 import { ContainerRoutes } from 'SVNavigation/containerRoutes'
 import { keg } from 'SVConfig'
