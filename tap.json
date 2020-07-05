@@ -1,6 +1,6 @@
 {
   "name": "kegerator",
-  "displayName": "Hogs-Head",
+  "displayName": "Kegerator",
   "keg": {
     "routes": {
       "/": "RootContainer"
