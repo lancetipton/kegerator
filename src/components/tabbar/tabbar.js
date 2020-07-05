@@ -76,7 +76,6 @@ const Bar = ({ children, styles }) => {
   )
 }
 
-// tab = { component, key, id, screen, title, icon }
 const Tabs = ({ activeIndex, tabs, styles, onTabSelect }) => {
   return useMemo(() => {
     return mapColl(tabs, (index, tab) => {
