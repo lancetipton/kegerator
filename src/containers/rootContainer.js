@@ -9,7 +9,6 @@ const TabScreen = props => {
       <Text>{ props.title || "I am a vew" }</Text>
     </View>
   )
-  
 }
 
 const tabs = [
