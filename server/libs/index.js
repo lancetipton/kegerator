@@ -1,7 +1,6 @@
-const websocket = require('./websocket')
-const logger = require('./logger')
+const docker = require('./websocket')
+
 
 module.exports = {
-  logger,
-  websocket,
+  docker
 }

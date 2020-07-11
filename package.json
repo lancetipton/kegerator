@@ -21,15 +21,14 @@
     "clean:rn": "yarn keg clean:rn",
     "start": "yarn web",
     "setup": "yarn install; cd node_modules/keg-core; yarn postinstall",
-    "web": "cd node_modules/keg-core; yarn web",
+    "web": "nodemon --watch node_modules/keg-core/core/base/configs --watch package.json --watch node_modules/keg-core/app.json --watch node_modules/keg-core/package.json --watch configs --exec 'cd node_modules/keg-core && yarn web'",
     "keg": "cd node_modules/keg-core; yarn",
     "format:eslint": "eslint --config ./configs/eslintrc.config.js . --fix --quiet",
     "format:prettier": "prettier --config ./configs/prettier.config.js --ignore-path .eslintignore --write '**/*.{js,jsx}'",
     "format": "yarn format:prettier && yarn format:eslint",
     "eslint:watch": "onchange '**/*.{js,jsx}' -- eslint --config ./configs/eslintrc.config.js {{changed}} --fix"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@ltipton/jsutils": "^5.0.0",
     "CBuffer": "^2.1.0",
@@ -50,6 +49,8 @@
     "moment": "^2.27.0",
     "nodemon": "^2.0.4",
     "prettier": "2.0.5",
+    "react-helmet": "^6.1.0",
+    "react-native-web-ui-components": "^3.0.10",
     "rimraf": "^3.0.1",
     "socket.io": "^2.3.0",
     "untildify": "^4.0.0"

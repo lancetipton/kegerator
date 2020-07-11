@@ -1,6 +1,5 @@
 // For mac, may need to symlink docker.sock
 // ln -s ~/Library/Containers/com.docker.docker/Data/docker.sock /var/run/docker.sock
-
 module.exports = {
   app: {
     port: 8080,

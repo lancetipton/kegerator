@@ -25,3 +25,4 @@ logs
 **/.git
 **/.DS_Store
 .npmrc
+/container
