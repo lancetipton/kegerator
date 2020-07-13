@@ -1,0 +1,42 @@
+{
+  "default": {
+    "app": {
+      "port": 8080,
+      "path": "/*"
+    },
+    "api": {
+      "port": 3000,
+      "path": "/api"
+    },
+    "websocket": {
+      "client": {
+        "port": "9091",
+        "endpoint": "http://localhost",
+        "type": "client"
+      },
+      "server": {
+        "port": "9091",
+        "endpoint": "http://localhost",
+        "type": "server"
+      },
+      "paths": {
+        "api": "/api",
+        "socket": "/socket"
+      }
+    },
+    "auth": {
+      "devToken": "",
+      "endpoint": "https://graphql.simpleviewinc.com/"
+    },
+    "docker": {
+      "socketPath": "/var/run/docker.sock",
+      "path": "http://localhost:2375/v1.30/",
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    }
+  },
+  "development": {},
+  "production": {}
+}

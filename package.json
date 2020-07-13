@@ -37,6 +37,7 @@
     "body-parser": "1.10.2",
     "byline": "^5.0.0",
     "dockerode": "^3.2.0",
+    "dotenv": "^8.0.0",
     "eslint": "7.1.0",
     "eslint-plugin-jest": "23.13.2",
     "eslint-plugin-react": "7.20.0",
@@ -57,12 +58,15 @@
   },
   "_moduleAliases": {
     "KegApp": "src",
-    "KegRoot": ".",
+    "KegRoot": "./rootPath.js",
     "KegConfigs": "configs",
     "KegServer": "server",
+    "KegSConst": "server/constants",
+    "KegSCmds": "server/libs/commands",
     "KegSControl": "server/controllers",
     "KegSLibs": "server/libs",
     "KegSRoutes": "server/routes",
+    "KegSSocket": "server/libs/websocket",
     "KegSUtils": "server/utils"
   }
 }

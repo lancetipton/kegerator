@@ -1,7 +1,4 @@
-const docker = {
-  ...require('./init')
-}
 
 module.exports = {
-  docker,
+  docker: require('./init'),
 }
