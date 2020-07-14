@@ -83,6 +83,7 @@ const Tabs = ({ activeIndex, tabs, styles, onTabSelect }) => {
       const keyId = key || id || index
       return (
         <Tab
+          data-class='tabbar-tab'
           key={ keyId }
           id={ keyId }
           { ...tabProps }
@@ -147,6 +148,7 @@ export const Tabbar = props => {
   
   tabs && TabComponents.push(
     <Bar
+      data-class='tabbar-bar'
       key={ 'tabbar' }
       styles={theme.join(
         barStyles.bar,
@@ -166,6 +168,7 @@ export const Tabbar = props => {
 
   tabs && TabComponents[addMethod](
     <TabView
+      data-class='tabbar-view'
       key={ 'tabview' }
       scroll={ scroll }
       onScroll={ scrollEvent }
@@ -176,7 +179,7 @@ export const Tabbar = props => {
   )
 
   return (
-    <View style={ barStyles.main } >
+    <View data-class='tabbar-main' style={ barStyles.main } >
       { TabComponents }
     </View>
   )

@@ -51,7 +51,6 @@
     "nodemon": "^2.0.4",
     "prettier": "2.0.5",
     "react-helmet": "^6.1.0",
-    "react-native-web-ui-components": "^3.0.10",
     "rimraf": "^3.0.1",
     "socket.io": "^2.3.0",
     "untildify": "^4.0.0"
