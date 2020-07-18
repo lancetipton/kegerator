@@ -7,11 +7,11 @@ export const TabView = ({ children, onScroll, scroll, styles }) => {
     <ScrollView
       scrollEventThrottle={ (scroll && scroll.throttle) || 16 }
       { ...scroll }
-      contentContainerStyle={ styles.container }
+      contentContainerStyle={ styles.main }
       style={ styles.scroll }
       onScroll={ onScroll }
     >
-      <View style={ styles.tabview } >
+      <View style={ styles.container } >
         { children }
       </View>
     </ScrollView>

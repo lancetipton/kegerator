@@ -46,14 +46,12 @@ export const SimpleList = (props) => {
             onHeaderPress={ onHeaderPress }
             styles={listStyles.header }
           />
-          <Slider toggled={ toggled } defHeight={ 0 } >
             <RenderListItems
               items={ meta }
               group={ key }
               onItemPress={ onItemPress }
               listStyles={ listStyles.item }
             />
-          </Slider>
         </Grid>
       )
     })

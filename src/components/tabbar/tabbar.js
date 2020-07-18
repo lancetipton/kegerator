@@ -26,20 +26,29 @@ const barStyles = {
     }
   },
   container: {
-    
-  },
-  scroll: {
-    
   },
   tabview: {
-    paddingTop: 30,
-    flex: 1,
-    flexDirection: 'row',
-    borderTopWidth: 1,
+    main: {
+      flex: 1,
+      flexDirection: 'row',
+      borderTopWidth: 1,
+    },
+    container: {
+      padding: 30,
+    },
+    scroll: {
+      
+    },
   },
   bar: {
-    minHeight: 50,
-    flexDirection: 'row',
+    bottom: {
+      minHeight: 50,
+      flexDirection: 'row',
+    },
+    top: {
+      minHeight: 30,
+      flexDirection: 'row',
+    }
   },
   tab: {
     default: {
@@ -47,9 +56,11 @@ const barStyles = {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        margin: 0,
       },
       text: {
-        textAlign: 'center'
+        textAlign: 'center',
+        marginBottom: 0,
       },
       icon: {
         before: {
@@ -145,13 +156,13 @@ export const Tabbar = props => {
 
   const TabComponents = []
   const addMethod = location === 'bottom' ? 'unshift' : 'push'
-  
+
   tabs && TabComponents.push(
     <Bar
       data-class='tabbar-bar'
       key={ 'tabbar' }
       styles={theme.join(
-        barStyles.bar,
+        barStyles.bar[location],
         fixed && { ...barStyles.fixed.main, ...barStyles.fixed[location] }
       )}
     >
@@ -172,7 +183,7 @@ export const Tabbar = props => {
       key={ 'tabview' }
       scroll={ scroll }
       onScroll={ scrollEvent }
-      styles={ barStyles }
+      styles={ barStyles.tabview }
     >
       <ActiveScreen tab={ active } styles={ barStyles } />
     </TabView>

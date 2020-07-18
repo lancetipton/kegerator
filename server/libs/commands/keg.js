@@ -10,7 +10,7 @@ const isKegCLICommand = (cmd, params) => {
   params.unshift(cmd)
   params.unshift(kegScript)
 
-  return [ 'bash', params ]
+  return [ '/bin/sh', params ]
 
 }
 

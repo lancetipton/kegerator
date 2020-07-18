@@ -23,5 +23,8 @@ env:
   VERSION: "0.0.1"
   CONTAINER_NAME: kegerator
 
+  SOCKET_PORT: 9091
+  API_PORT: 9090
+
   # Git tap url in github
   GIT_APP_URL: INITIAL

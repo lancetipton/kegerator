@@ -9,6 +9,9 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
 } from 'react-native'
+import { ListItem as ListItemRNP } from 'react-native-elements'
+
+
 
 const noOpObj = {}
 
@@ -94,7 +97,7 @@ const buildStyles = (theme, styles) => {
   }
 }
 
-export const ListItem = props => {
+const ListItem = props => {
   const {
     actions,
     avatar,
@@ -110,7 +113,6 @@ export const ListItem = props => {
   const theme = useTheme()
   const mergeStyles = useStyles(styles, props, buildStyles)
   const [ rowRef, itemStyles ] = useThemeHover(mergeStyles.default, mergeStyles.hover)
-
 
   return (
       <TouchableWithFeedback
@@ -143,4 +145,9 @@ export const ListItem = props => {
       </Row>
     </TouchableWithFeedback>
   )
+}
+
+export {
+  ListItem,
+  ListItemRNP
 }

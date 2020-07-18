@@ -53,12 +53,16 @@
     "nodemon": "^2.0.4",
     "npm-run-all": "^4.1.5",
     "prettier": "2.0.5",
+    "react-native-elements": "^2.0.4",
     "rimraf": "^3.0.1",
     "socket.io": "^2.3.0",
+    "spawn-cmd": "git+https://github.com/lancetipton/spawn-cmd.git",
     "untildify": "^4.0.0"
   },
   "_moduleAliases": {
     "KegApp": "src",
+    "KegCli": "node_modules/keg-cli",
+    "KegCliProc": "node_modules/keg-cli/src/libs/process",
     "KegRoot": "./rootPath.js",
     "KegConfigs": "configs",
     "KegServer": "server",

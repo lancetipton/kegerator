@@ -1,10 +1,15 @@
 const { get, uuid, deepMerge, reduceObj } = require('jsutils')
-const { NODE_ENV, COMMANDS_PATH, COMMANDS } = process.env
-
+const { NODE_ENV, COMMANDS_PATH } = process.env
+const COMMANDS = process.env.COMMANDS || 'kegerator'
 const commandConfig = require(COMMANDS_PATH || 'KegConfigs/cmds.config.json')
 const typeCommands = get(commandConfig, `${ COMMANDS }.commands`)
 const filters = get(commandConfig, `${ COMMANDS }.filters`, {})
 const commandTypes = get(commandConfig, `${ COMMANDS }.types`, [])
+
+// const { mapTasks } = require('KegSUtils/keg/mapTasks')
+// const mapped = mapTasks()
+// console.log(`---------- mapped ----------`)
+// console.log(mapped)
 
 if(!typeCommands)
   throw new Error(

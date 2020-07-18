@@ -1,0 +1,52 @@
+{
+  "default": {
+    "api": {
+      "port": 9090,
+      "path": "/api"
+    },
+    "auth": {
+      "devToken": "",
+      "endpoint": "https://graphql.simpleviewinc.com/"
+    },
+    "docker": {
+      "socketPath": "/var/run/docker.sock",
+      "path": "http://localhost:2375/v1.30/",
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    },
+    "websocket": {
+      "client": {
+        "port": "9090",
+        "endpoint": "http://192.168.99.101",
+        "type": "client"
+      },
+      "server": {
+        "port": "9090",
+        "endpoint": "http://192.168.99.101",
+        "type": "server"
+      },
+      "paths": {
+        "api": "/api",
+        "socket": "/socket"
+      }
+    },
+    "versions": {
+      "app": "1.0.0"
+    }
+  },
+  "development": {
+    "kegerator": {}
+  },
+  "production": {
+    "kegerator": {
+      "websocket": {
+        "client": {
+          "port": false,
+          "endpoint": "https://websocket.kegerator.com"
+        }
+      }
+    }
+  }
+}

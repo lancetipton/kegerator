@@ -7,8 +7,6 @@ import {
   onFail,
   onMessage,
   peerDisconnect,
-  onTokenError,
-  logOut,
   setCommands,
   setId,
   toggleIsRunning,
@@ -38,10 +36,6 @@ class SocketService {
     // If the sockets already setup, just return
     if(this.socket) return
 
-    // If no token, call the tokenError event
-    if(!token)
-      return onTokenError(`Missing Login Authorization!`)
-
     // Setup the socket, and connect to the server
     this.socket = io(this.buildEndpoint(config), {
       path: config.paths.socket,
@@ -64,10 +58,6 @@ class SocketService {
       setId(message)
       setCommands(message)
     }))
-    
-    // If the user is not authorized, then this event will fire
-    // Which will log the user out, and force them to re-login
-    this.socket.on(EventTypes.NOT_AUTHORIZED, formatEvt(logOut))
 
     // Add / Remove peer users, may be used later
     this.socket.on(EventTypes.ADD_PEER, formatEvt(addPeer))
@@ -93,10 +83,8 @@ class SocketService {
   }
 
   onConnection = token => {
-    if(!token) return onTokenError(`Missing Login Authorization!`)
-
     // Send the token to the server to be validated
-    this.emit(EventTypes.AUTH_TOKEN, { token: token })
+    // this.emit(EventTypes.AUTH_TOKEN, { token: token })
   }
 
   emit = (type, data) => {

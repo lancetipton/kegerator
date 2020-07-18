@@ -26,6 +26,17 @@ keg_set_container_paths(){
 
 }
 
+keg_add_git_key(){
+  git config --global url.https://$GIT_KEY@github.com/.insteadOf https://github.com/
+  echo "@simpleviewinc:registry=https://npm.pkg.github.com/" > .npmrc
+  echo "//npm.pkg.github.com/:_authToken=${GIT_KEY}" >> .npmrc
+}
+
+keg_remove_git_key(){
+  git config --global url.https://github.com/.insteadOf url.https://$GIT_KEY@github.com/
+  rm -rf .npmrc
+}
+
 # Runs yarn install at run time
 # Use when adding extra node_modules to keg-core without rebuilding
 keg_run_tap_yarn_setup(){
@@ -35,17 +46,13 @@ keg_run_tap_yarn_setup(){
     return
   fi
 
-  if [[ "$KEG_NM_INSTALL" != "core" ]]; then
-    # Navigate to the cached directory, and run the yarn install here
-    cd $TAP_PATH
-    keg_message "Running yarn setup for tap..."
-    yarn install
-  fi
-  
   if [[ "$KEG_NM_INSTALL" ]]; then
-    keg_message "Running yarn install for keg-core..."
-    cd $DOC_CORE_PATH
-    yarn install
+    # Navigate to the tap directory, and run the yarn install here
+    cd $TAP_PATH
+    keg_add_git_key
+    keg_message "Running yarn setup for tap..."
+    yarn setup
+    keg_remove_git_key
   fi
 
 }

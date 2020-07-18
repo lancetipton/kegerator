@@ -6,7 +6,7 @@ import { isValidComponent } from 'SVUtils/validate'
 
 const TabIcon = ({ icon, location, styles }) => {
   icon = isStr(icon) ? { name: icon } : icon
-  return (<Icon { ...icon } style={ styles[location] } />)
+  return (<Icon data-class="tabbar-tab-icon" { ...icon } style={ styles[location] } />)
 }
 
 const BuildChildren = (props) => {
@@ -23,7 +23,15 @@ const BuildChildren = (props) => {
     // Check if it's a react component
     isValidComponent(TitleComp)
       ? (<TitleComp key={ 'title' } { ...props } />)
-      : (<Label key={ 'title' } style={ styles.title || styles.text } >{ TitleComp }</Label>)
+      : (
+          <Label
+            data-class='tabbar-tab-title'
+            key={ 'title' }
+            style={ styles.title || styles.text }
+          >
+            { TitleComp }
+          </Label>
+        )
   )
 
   // If not icon component, just return
@@ -59,6 +67,7 @@ export const Tab = props => {
 
   return (
     <TouchableOpacity
+      data-class="tabbar-tab"
       style={ mergedStyles.container }
       onPress={() => onTabSelect(id)}
     >

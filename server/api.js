@@ -11,7 +11,7 @@ const setPublic = (app, public=[]) => {
 const configure = (app, config) => {
 
   //Set which port to listen on
-  app.set('port', config.port || process.env.PORT || 3000)
+  app.set('port', config.port || process.env.PORT || 9090)
 
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: true }))

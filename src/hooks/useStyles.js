@@ -1,17 +1,23 @@
 import React, { useState, useLayoutEffect } from 'react'
 import { useTheme } from '@simpleviewinc/re-theme'
 import { isFunc } from 'jsutils'
+import { noOpObj } from 'SVUtils'
+
+const callBuildStyles = (buildStyles, theme, styles=noOpObj, props) => {
+  return isFunc(buildStyles) && buildStyles(theme, styles, props)
+}
 
 export const useStyles = (styles, props, buildStyles) => {
   const theme = useTheme()
   const [ builtStyles, setBuiltStyles  ] = useState(null)
   
   useLayoutEffect(() => {
-
-    isFunc(buildStyles) && setBuiltStyles(buildStyles(theme, styles, props))
+    styles && 
+      buildStyles && 
+      setBuiltStyles(callBuildStyles(buildStyles, theme, styles, props))
 
   }, [ theme, styles, buildStyles ])
 
-  return builtStyles || buildStyles(theme, styles)
+  return builtStyles || callBuildStyles(buildStyles, theme, styles, props)
 
 }

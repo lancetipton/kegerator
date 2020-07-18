@@ -11,6 +11,11 @@
       },
       "dynamic": {
         "Configs": "../configs"
+      },
+      "alias": {
+        "web": {
+          "@expo/vector-icons": "node_modules/@expo/vector-icons"
+        }
       }
     },
     "versions": {
@@ -21,46 +26,6 @@
     },
     "paths": {
       "buildConfig": "configs/build.config.js"
-    },
-    "config": {
-      "default": {
-        "auth": {
-          "devToken": "",
-          "endpoint": "https://graphql.simpleviewinc.com/"
-        },
-        "websocket": {
-          "client": {
-            "port": "9091",
-            "endpoint": "http://localhost",
-            "type": "client"
-          },
-          "server": {
-            "port": "9091",
-            "endpoint": "http://localhost",
-            "type": "server"
-          },
-          "paths": {
-            "api": "/api",
-            "socket": "/socket"
-          }
-        },
-        "versions": {
-          "app": "1.0.0"
-        }
-      },
-      "development": {
-        "kegerator": {}
-      },
-      "production": {
-        "kegerator": {
-          "websocket": {
-            "client": {
-              "port": false,
-              "endpoint": "https://websocket.kegerator.com"
-            }
-          }
-        }
-      }
     }
   },
   "expo": {

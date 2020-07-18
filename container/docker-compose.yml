@@ -49,4 +49,6 @@ services:
       - TAP
     ports:
       - ${EXPO_DEBUG_PORT}:${EXPO_DEBUG_PORT}
+      - ${API_PORT}:${API_PORT}
+      - ${SOCKET_PORT}:${SOCKET_PORT}
       - 80:${DOC_APP_PORT}

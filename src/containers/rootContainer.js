@@ -2,35 +2,13 @@ import React, { useState } from 'react'
 import { wordCaps } from 'jsutils'
 import { displayName } from 'SVConfig'
 import {
-  Containers,
-  Images,
-  H6,
-  Syncs,
   SimpleList,
   Sidebar,
-  Tabbar,
-  Text,
-  View,
   withAppHeader,
+  View,
 } from 'SVComponents'
-
-const tabs = [
-  {
-    title: 'Containers',
-    id: 0,
-    screen: Containers,
-  },
-  {
-    title: 'Images',
-    id: 1,
-    screen: Images,
-  },
-  {
-    title: 'Syncs',
-    id: 2,
-    screen: Syncs,
-  },
-]
+import { ActiveScreen } from './screens/activeScreen'
+import { useTheme } from '@simpleviewinc/re-theme'
 
 const commands = {
   docker: {
@@ -78,22 +56,23 @@ const onItemPress = (event) => {
   console.log(event)
 }
 
-
 export const RootContainer = withAppHeader(displayName, props => {
-  
+  const theme = useTheme()
+  const containerStyles =  theme.containers.root
+
   const [ toggled, setToggled ] = useState(null)
   
   return (
-    <>
-      <Sidebar>
+    <View style={ containerStyles.main } >
+      <Sidebar styles={ containerStyles.sidebar } >
         <SimpleList
           items={ commands }
           onHeaderPress={ onHeaderPress(toggled, setToggled) }
           onItemPress={ onItemPress }
         />
       </Sidebar>
-      <Tabbar tabs={ tabs } />
-    </>
+      <ActiveScreen { ...props } styles={ containerStyles.screen }  />
+    </View>
   )
 })
 
