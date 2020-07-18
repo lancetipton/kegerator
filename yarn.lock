@@ -101,10 +101,9 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"jsutils@^5.0.0", "jsutils@npm:jsutils":
-  name jsutils
+"@ltipton/jsutils@^5.0.0", "jsutils@npm:@ltipton/jsutils":
   version "5.0.0"
-  resolved "https://registry.yarnpkg.com/jsutils/-/jsutils-5.0.0.tgz#60e06ac07977f968e37221a79619e7e67ecd7e42"
+  resolved "https://registry.yarnpkg.com/@ltipton/jsutils/-/jsutils-5.0.0.tgz#60e06ac07977f968e37221a79619e7e67ecd7e42"
   integrity sha512-vr3lx3C4V9ufyC2QrmEXgf/XhRHBnchNWLJSKYHuGg/KftK4qP87+8mePTFi0UtfFL2CWIsTE6v9MoUB3s+/fQ==
 
 "@sindresorhus/is@^0.14.0":
@@ -298,7 +297,7 @@ arraybuffer.slice@~0.0.7:
   version "0.0.1"
   resolved "git+https://github.com/lancetipton/askIt.git#c6049e33888425123ec5461fe88765e716cdb1eb"
   dependencies:
-    "jsutils" "^5.0.0"
+    "@ltipton/jsutils" "^5.0.0"
     colors "1.4.0"
     inquirer "7.0.6"
 
@@ -1782,7 +1781,7 @@ jsx-ast-utils@^2.2.3:
   version "1.4.0"
   resolved "https://github.com/simpleviewinc/keg-cli.git#bc1a1ae1f4f4100252ea53555ff53c42240043fc"
   dependencies:
-    "jsutils" "^5.0.0"
+    "@ltipton/jsutils" "^5.0.0"
     askIt "git+https://github.com/lancetipton/askIt.git"
     axios "0.19.2"
     cli-progress "3.8.2"
