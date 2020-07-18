@@ -1,13 +1,7 @@
 import { keg } from 'SVConfig'
 import { deepMerge, get } from 'jsutils'
 
-console.log(process.env)
-
 const ENV = process.env.NODE_ENV || 'development'
-
-console.log(`---------- keg ----------`)
-console.log(keg)
-
 const commandsType = 'kegerator'
 const appConfig = keg.config
 

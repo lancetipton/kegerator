@@ -1,3 +1,3 @@
-import AppConf from './app.config'
+import { AppConfig } from './app.config'
 
-export const appState = { ...AppConf }
+export const appState = { ...AppConfig }

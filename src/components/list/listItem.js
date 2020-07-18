@@ -2,6 +2,18 @@ import React from 'react'
 import { get, isStr } from 'jsutils'
 import { Icon, View, Row, Text } from 'SVComponents'
 import { isValidComponent } from 'SVUtils'
+import { useStyles } from 'SVHooks'
+import { useTheme, useThemeHover } from '@simpleviewinc/re-theme'
+import {
+  Platform,
+  TouchableOpacity,
+  TouchableNativeFeedback,
+} from 'react-native'
+
+const noOpObj = {}
+
+const TouchableWithFeedback =
+  Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
 
 const renderCustomOrDefault = (Component, DefComponent, props) => {
   return isValidComponent(Component)
@@ -14,7 +26,7 @@ const RenderActions = ({ actions, ...props }) => {
     <View data-class='list-item-actions' { ...props } >
       
     </View>
-  )
+  ) || null
 }
 
 const RenderAvatar = ({ avatar, ...props }) => {
@@ -22,7 +34,7 @@ const RenderAvatar = ({ avatar, ...props }) => {
     <View data-class='list-item-avatar' {...props} >
       
     </View>
-  )
+  ) || null
 }
 
 const RenderIcon = ({ icon, style, ...props }) => {
@@ -34,15 +46,52 @@ const RenderIcon = ({ icon, style, ...props }) => {
       { ...props }
       { ...icon }
     />
-  )
+  ) || null
 }
 
-const RenderTitle = props => {
+const RenderTitle = ({ style, title, ...props }) => {
   return title && (
-    <Text data-class='list-item-title' { ...props } >
+    <Text
+      data-class='list-item-title'
+      { ...props }
+    >
       { title }
     </Text>
-  )
+  ) || null
+}
+
+const buildStyles = (theme, styles) => {
+  return {
+    default: {
+      main: {
+
+      },
+      row: {
+        ...theme.flex.justify.start,
+        ...theme.flex.align.center,
+        backgroundColor: theme.colors.surface.primary.colors.dark,
+        paddingVertical: (theme.padding.size / 3),
+        paddingHorizontal: (theme.padding.size),
+        borderTopWidth: 1,
+        borderTopColor: theme.colors.palette.black02,
+        borderBottomWidth: 1,
+        borderBottomColor: theme.colors.palette.black02,
+        ...get(styles, 'row.default'),
+      },
+      avatar: {
+        
+      },
+      icon: {
+        
+      },
+      title: {
+        
+      },
+      actions: {
+        
+      }
+    }
+  }
 }
 
 export const ListItem = props => {
@@ -50,38 +99,48 @@ export const ListItem = props => {
     actions,
     avatar,
     children,
-    components,
+    components=noOpObj,
     icon,
-    onRowPress,
-    styles={},
+    onItemPress,
+    styles=noOpObj,
     subtitle,
     title,
   } = props
 
+  const theme = useTheme()
+  const mergeStyles = useStyles(styles, props, buildStyles)
+  const [ rowRef, itemStyles ] = useThemeHover(mergeStyles.default, mergeStyles.hover)
+
+
   return (
-    <Row onPress={ onRowPress } style={ styles.row } >
-      { children || ([
-        renderCustomOrDefault(
-          components.avatar,
-          RenderAvatar,
-          { key: 'list-item-avatar', avatar, style: styles.avatar },
-        ),
-        renderCustomOrDefault(
-          components.icon,
-          RenderIcon,
-          { key: 'list-item-icon', icon, style: styles.icon }
-        ),
-        renderCustomOrDefault(
-          components.title,
-          RenderTitle,
-          { key: 'list-item-title', title, style: styles.title }
-        ),
-        renderCustomOrDefault(
-          components.actions,
-          RenderActions,
-          { key: 'list-item-actions', actions, style: styles.actions }
-        )
-      ])}
-    </Row>
+      <TouchableWithFeedback
+        style={[ itemStyles.main ]}
+        onPress={onItemPress}
+      >
+      <Row style={ itemStyles.row } >
+        { children || ([
+          renderCustomOrDefault(
+            components.avatar,
+            RenderAvatar,
+            { key: 'list-item-avatar', avatar, style: itemStyles.avatar },
+          ),
+          renderCustomOrDefault(
+            components.icon,
+            RenderIcon,
+            { key: 'list-item-icon', icon, style: itemStyles.icon }
+          ),
+          renderCustomOrDefault(
+            components.title,
+            RenderTitle,
+            { key: 'list-item-title', title, style: itemStyles.title }
+          ),
+          renderCustomOrDefault(
+            components.actions,
+            RenderActions,
+            { key: 'list-item-actions', actions, style: itemStyles.actions }
+          )
+        ])}
+      </Row>
+    </TouchableWithFeedback>
   )
 }

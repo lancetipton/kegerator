@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { wordCaps } from 'jsutils'
 import { displayName } from 'SVConfig'
 import {
   Containers,
   Images,
   H6,
   Syncs,
-  ListItem,
+  SimpleList,
   Sidebar,
   Tabbar,
   Text,
@@ -34,7 +35,6 @@ const tabs = [
 const commands = {
   docker: {
     list: {
-      group: 'docker',
       description: 'List docker items',
       command: 'keg docker {{ type }} ls',
       options: {
@@ -51,7 +51,6 @@ const commands = {
       }
     },
     core: {
-      group: 'containers',
       description: 'Run an action on the keg-core repo',
       command: 'keg core {{ action }}',
       options: {
@@ -71,48 +70,28 @@ const commands = {
   }
 }
 
-const RenderListHeader = ({ title }) => {
-  return (
-    <View>
-      <H6>{ title }</H6>
-    </View>
-  )
+const onHeaderPress = (toggled, setToggled) => {
+  return event => setToggled(!toggled)
 }
 
-const RenderListItems = ({ items }) => {
-  return Object.entries(items)
-    .map(([ key, meta ]) => {
-      return (
-        <React.Fragment key={`${meta.group}-${key}`} >
-          <RenderListHeader title={ meta.group } />
-          <ListItem
-            key={`${meta.group}-${key}`}
-            title={ key }
-            { ...meta }
-          />
-        </React.Fragment>
-        )
-    })
+const onItemPress = (event) => {
+  console.log(event)
 }
-
-const RenderSideBar = () => {
-  return (
-    <Sidebar>
-      { Object.entries(commands)
-      .map(([ key, meta ]) => {
-        return (
-          <RenderListItems key={ key } items={ meta } />
-          )
-      }) }
-    </Sidebar>
-  )
-} 
 
 
 export const RootContainer = withAppHeader(displayName, props => {
+  
+  const [ toggled, setToggled ] = useState(null)
+  
   return (
     <>
-      <RenderSideBar />
+      <Sidebar>
+        <SimpleList
+          items={ commands }
+          onHeaderPress={ onHeaderPress(toggled, setToggled) }
+          onItemPress={ onItemPress }
+        />
+      </Sidebar>
       <Tabbar tabs={ tabs } />
     </>
   )

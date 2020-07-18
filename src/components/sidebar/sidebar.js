@@ -5,7 +5,6 @@ import { useTheme } from '@simpleviewinc/re-theme'
 import React from 'react'
 
 const buildStyles = (theme, styles={}) => {
-
   return {
     main: {
       position: 'fixed',
