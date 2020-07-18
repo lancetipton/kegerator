@@ -1,4 +1,4 @@
-const { isFunc, isObj, isStr, checkCall } = require('@ltipton/jsutils')
+const { isFunc, isObj, isStr, checkCall } = require('jsutils')
 const svAuth = require('../auth')
 const { commands } = require('KegSCmds')
 const { EventTypes } = require('KegSConst')

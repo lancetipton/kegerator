@@ -1,6 +1,6 @@
 const path = require('path')
 const { spawn } = require('child_process')
-const { uuid, get } = require('@ltipton/jsutils')
+const { uuid, get } = require('jsutils')
 const { EventTypes } = require('KegSConst')
 const rootDir = require('KegRoot')
 const { commands, filters } = require('./loadCommands')

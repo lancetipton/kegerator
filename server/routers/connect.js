@@ -1,4 +1,4 @@
-const { mapObj, checkCall } = require('@ltipton/jsutils')
+const { mapObj, checkCall } = require('jsutils')
 
 const addControllersToRouters = (app, routers, controllers, config) => {
   mapObj(routers, (name, router) => checkCall(controllers[name], app, router))

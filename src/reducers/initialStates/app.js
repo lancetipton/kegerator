@@ -1,4 +1,3 @@
-export const appState = {
-  appName: 'Kegerator',
-  initialized: false,
-}
+import AppConf from './app.config'
+
+export const appState = { ...AppConf }

@@ -1,6 +1,6 @@
 import { View } from 'SVComponents'
 import { useStyles } from 'SVHooks'
-import { get } from '@ltipton/jsutils'
+import { get } from 'jsutils'
 import { useTheme } from '@simpleviewinc/re-theme'
 import React from 'react'
 

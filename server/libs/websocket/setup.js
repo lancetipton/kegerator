@@ -1,6 +1,6 @@
 
 const SocketIO = require('socket.io')
-const { checkCall, get } = require('@ltipton/jsutils')
+const { checkCall, get } = require('jsutils')
 const { commands } = require('KegSCmds')
 const SocketManager = require('./manager')
 const { EventTypes } = require('KegSConst')

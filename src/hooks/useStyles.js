@@ -1,6 +1,6 @@
 import React, { useState, useLayoutEffect } from 'react'
 import { useTheme } from '@simpleviewinc/re-theme'
-import { isFunc } from '@ltipton/jsutils'
+import { isFunc } from 'jsutils'
 
 export const useStyles = (styles, props, buildStyles) => {
   const theme = useTheme()

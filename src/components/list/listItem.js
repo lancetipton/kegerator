@@ -1,5 +1,5 @@
 import React from 'react'
-import { get, isStr } from '@ltipton/jsutils'
+import { get, isStr } from 'jsutils'
 import { Icon, View, Row, Text } from 'SVComponents'
 import { isValidComponent } from 'SVUtils'
 

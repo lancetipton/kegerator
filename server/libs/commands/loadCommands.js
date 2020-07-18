@@ -1,4 +1,4 @@
-const { get, uuid, deepMerge, reduceObj } = require('@ltipton/jsutils')
+const { get, uuid, deepMerge, reduceObj } = require('jsutils')
 const { NODE_ENV, COMMANDS_PATH, COMMANDS } = process.env
 
 const commandConfig = require(COMMANDS_PATH || 'KegConfigs/cmds.config.json')

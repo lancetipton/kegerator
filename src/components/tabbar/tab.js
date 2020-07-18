@@ -1,4 +1,4 @@
-import { get, isFunc, isStr, deepMerge } from '@ltipton/jsutils'
+import { get, isFunc, isStr, deepMerge } from 'jsutils'
 import React, { isValidElement } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { View, Label, Icon } from 'SVComponents'

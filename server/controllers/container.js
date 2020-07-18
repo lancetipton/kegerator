@@ -1,8 +1,7 @@
-const { isArr, limbo, checkCall } = require('@ltipton/jsutils')
+const { isArr, limbo, checkCall } = require('jsutils')
 const { errorResponse } = require('../utils/error')
 
 const getContainerData = app => {
-
   return async (req, res, next) => {
     const { id } = req.params
     const [ listErr, containers ] = await limbo(app.dockerAPI.container.list())
@@ -19,7 +18,6 @@ const getContainerData = app => {
     res.container = container
 
     next()
-
   }
 }
 

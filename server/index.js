@@ -6,7 +6,7 @@ const { docker } = require('./libs/docker')
 const { controllers } = require('./controllers')
 const config = require('KegConfigs/server.config')
 const { connect, ...routers } = require('./routers')
-const { checkCall, setLogs } = require('@ltipton/jsutils')
+const { checkCall, setLogs } = require('jsutils')
 const { websocket } = require('KegSSocket')
 
 

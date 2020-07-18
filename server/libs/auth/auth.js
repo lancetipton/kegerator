@@ -1,5 +1,5 @@
 const axios = require("axios")
-const { get, limbo } = require("@ltipton/jsutils")
+const { get, limbo } = require("jsutils")
 const config = require('KegConfigs/server.config')
 
 const authEndpoint = get(config, 'auth.endpoint')

@@ -1,7 +1,7 @@
 import React, { isValidElement, useMemo, useCallback, useState } from 'react'
 import { Tab } from './tab'
 import { TabView } from './tabview'
-import { checkCall, isFunc, mapColl } from '@ltipton/jsutils'
+import { checkCall, isFunc, mapColl } from 'jsutils'
 // import { useThemePath } from 'SVHooks'
 import { useTheme } from '@simpleviewinc/re-theme'
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native'
