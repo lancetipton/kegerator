@@ -35,6 +35,10 @@ RUN git config --global url.https://$GIT_KEY@github.com/.insteadOf https://githu
     fi; \
     rm -rf /keg-temp
 
+# Copy over the package.json, and yarn.lock files
+COPY package.json $DOC_APP_PATH/package.json
+COPY *.lock $DOC_APP_PATH/
+
 # Install the dependecies with yarn setup, then remove the .npmrc
 RUN cd $DOC_APP_PATH; \
     echo "@simpleviewinc:registry=https://npm.pkg.github.com/" > .npmrc; \
