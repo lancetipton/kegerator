@@ -6,32 +6,14 @@ const SocketManager = require('./manager')
 const { EventTypes } = require('KegSConst')
 const config = require('KegConfigs/server.config')
 
-const setupSocketCmds = (socket) => {
-  // Check for auth, and setup an auth token if needed
-  return !SocketManager.auth
-    ? checkCall(() => {
-        // Setup the socket, and update connected peers
-        SocketManager.setupSocket(socket)
-        // Setup the socket commands to listen too
-        return commands(socket, SocketManager)
-      })
-    : socket.on(EventTypes.AUTH_TOKEN, message => {
-        // Setup the auth token
-        SocketManager.authToken(socket, message, (error, authorized) => {
-
-          // If authorized, setup the commands
-          if(authorized) return commands(socket, SocketManager)
-
-          // If not authorized, log it and disconnect the socket!
-          const message = error && error.message || `Unauthorized socket connection!`
-          console.error(error && error.stack || message, socket) 
-          SocketManager.disconnect(socket, message)
-
-        })
-      })
+const setupSocketCmds = (socket, kegTasks) => {
+  // Setup the socket, and update connected peers
+  SocketManager.setupSocket(socket, kegTasks)
+  // Setup the socket commands to listen too
+  return commands(socket, SocketManager)
 }
 
-const setupWebSocket = server => {
+const setupWebSocket = (server, kegTasks) => {
   // Setup the socket
   const io = new SocketIO({ path: get(config, 'websocket.paths.socket', "/socket") })
 
@@ -42,7 +24,7 @@ const setupWebSocket = server => {
   SocketManager.socketIo = SocketManager.socketIo || io
 
   // Setup the socket listener, and add socket commands listener
-  io.on('connection', socket => setupSocketCmds(socket))
+  io.on('connection', socket => setupSocketCmds(socket, kegTasks))
 
 }
 

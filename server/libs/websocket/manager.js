@@ -115,7 +115,7 @@ class SocketManager {
       : this.disconnect(socket)
   }
 
-  setupSocket(socket){
+  setupSocket(socket, kegTasks){
 
     try {
 
@@ -128,7 +128,7 @@ class SocketManager {
         EventTypes.SET_ID,
         { 
           id,
-          commands,
+          tasks: kegTasks,
           isRunning: this.isRunning,
           peers: Object.keys(this.peers)
         }

@@ -25,10 +25,7 @@ checkCall(async () => {
   // Start the server
   const server = init(config.api || {})
   const kegTasks = await getKegTasks()
-  
-  console.log(`---------- kegTasks ----------`)
-  console.log(kegTasks)
-  
-  websocket(server)
+
+  websocket(server, kegTasks)
 
 })

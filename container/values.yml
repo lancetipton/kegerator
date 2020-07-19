@@ -4,6 +4,8 @@ env:
   COMPONENTS_PATH: "{{ cli.paths.components }}"
   RETHEME_PATH: "{{ cli.paths.retheme }}"
   RESOLVER_PATH: "{{ cli.paths.resolver }}"
+  CLI_PATH: "{{ cli.paths.cli }}"
+  KEG_CLI_GLOBAL: "/Users/lancetipton/.kegConfig"
 
   # --- DOCKER ENV CONTEXT --- #
 

@@ -54,9 +54,11 @@ class SocketService {
     // EventTypes.SET_ID is called directly after the Auth token
     // You can assume at this point, the user is authorized
     this.socket.on(EventTypes.SET_ID, formatEvt(message => {
-      onConnected(message)
-      setId(message)
-      setCommands(message)
+      console.log(`---------- message ----------`)
+      console.log(message)
+      // onConnected(message)
+      // setId(message)
+      // setCommands(message)
     }))
 
     // Add / Remove peer users, may be used later

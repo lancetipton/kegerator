@@ -7,6 +7,9 @@ FROM $KEG_IMAGE_FROM as builder
 
 WORKDIR /
 
+# Add npm-run-all globally
+RUN yarn global add npm-run-all
+
 # These args are expected to be set as --build-arg
 # Which Allow them to be used durring the build
 ARG GIT_KEY
@@ -71,7 +74,7 @@ ENV REACT_NATIVE_PACKAGER_HOSTNAME $KEG_DOCKER_IP
 ENV GIT_KEY=""
 
 # Install git for the new stage
-RUN apk add --no-cache git
+RUN apk add --no-cache git bash nano
 
 # Copy over the globally installed modules from above
 COPY --from=builder /usr/local/share/.config/yarn /usr/local/share/.config/yarn
@@ -92,7 +95,7 @@ EXPOSE 19006
 EXPOSE 60710
 
 # Set the current directory to tap repo
-WORKDIR /$DOC_APP_PATH
+WORKDIR $DOC_APP_PATH
 
 # Run the start script
 # Dont use the array syntax, so we have access to the DOC_CLI_PATH ENV
