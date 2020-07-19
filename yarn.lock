@@ -101,10 +101,10 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@ltipton/jsutils@^5.0.0", "jsutils@npm:@ltipton/jsutils":
-  name jsutils
+"@ltipton/jsutils@^5.0.0", "@ltipton/jsutils@npm:@ltipton/jsutils":
+  name @ltipton/jsutils
   version "5.0.0"
-  resolved "https://registry.yarnpkg.com/@ltipton/jsutils/-/jsutils-5.0.0.tgz#60e06ac07977f968e37221a79619e7e67ecd7e42"
+  resolved "https://registry.yarnpkg.com/@ltipton/jsutils/-/@ltipton/jsutils-5.0.0.tgz#60e06ac07977f968e37221a79619e7e67ecd7e42"
   integrity sha512-vr3lx3C4V9ufyC2QrmEXgf/XhRHBnchNWLJSKYHuGg/KftK4qP87+8mePTFi0UtfFL2CWIsTE6v9MoUB3s+/fQ==
 
 "@sindresorhus/is@^0.14.0":
@@ -1832,9 +1832,9 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "https://registry.yarnpkg.com/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha1-nbe1lJatPzz+8wp1FC0tkwrXJlE=
 
-"jsutils@git+https://github.com/lancetipton/jsutils.git":
+"@ltipton/jsutils@git+https://github.com/lancetipton/@ltipton/jsutils.git":
   version "5.0.0"
-  resolved "git+https://github.com/lancetipton/jsutils.git#89eda2edcef072062255cd236fa73f3d05629669"
+  resolved "git+https://github.com/lancetipton/@ltipton/jsutils.git#89eda2edcef072062255cd236fa73f3d05629669"
 
 jsx-ast-utils@^2.2.3:
   version "2.4.1"
@@ -2922,7 +2922,7 @@ source-map@^0.5.0:
   dependencies:
     app-root-path "^3.0.0"
     cross-spawn "^7.0.3"
-    jsutils "git+https://github.com/lancetipton/jsutils.git"
+    @ltipton/jsutils "git+https://github.com/lancetipton/@ltipton/jsutils.git"
     shell-exec "^1.0.2"
     tree-kill "1.2.1"
 

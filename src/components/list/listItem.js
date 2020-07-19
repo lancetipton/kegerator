@@ -1,5 +1,5 @@
 import React from 'react'
-import { get, isStr } from 'jsutils'
+import { get, isStr, capitalize } from '@ltipton/jsutils'
 import { Icon, View, Row, Text } from 'SVComponents'
 import { isValidComponent } from 'SVUtils'
 import { useStyles } from 'SVHooks'
@@ -10,8 +10,6 @@ import {
   TouchableNativeFeedback,
 } from 'react-native'
 import { ListItem as ListItemRNP } from 'react-native-elements'
-
-
 
 const noOpObj = {}
 
@@ -56,9 +54,10 @@ const RenderTitle = ({ style, title, ...props }) => {
   return title && (
     <Text
       data-class='list-item-title'
+      style={ style }
       { ...props }
     >
-      { title }
+      { capitalize(title) }
     </Text>
   ) || null
 }
@@ -72,11 +71,8 @@ const buildStyles = (theme, styles) => {
       row: {
         ...theme.flex.justify.start,
         ...theme.flex.align.center,
-        backgroundColor: theme.colors.surface.primary.colors.dark,
         paddingVertical: (theme.padding.size / 3),
         paddingHorizontal: (theme.padding.size),
-        borderTopWidth: 1,
-        borderTopColor: theme.colors.palette.black02,
         borderBottomWidth: 1,
         borderBottomColor: theme.colors.palette.black02,
         ...get(styles, 'row.default'),
@@ -88,7 +84,7 @@ const buildStyles = (theme, styles) => {
         
       },
       title: {
-        
+        color: theme.tapColors.textColorAlt,
       },
       actions: {
         

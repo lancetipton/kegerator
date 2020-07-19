@@ -1,4 +1,4 @@
-const { isStr, isObj } = require('jsutils')
+const { isStr, isObj } = require('@ltipton/jsutils')
 const testTasks = require('./tasks_dev.json')
 
 const convertTask = (task, parent) => {

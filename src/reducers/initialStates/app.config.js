@@ -1,5 +1,5 @@
 import { keg } from 'SVConfig'
-import { deepMerge, get } from 'jsutils'
+import { deepMerge, get } from '@ltipton/jsutils'
 
 const ENV = process.env.NODE_ENV || 'development'
 const commandsType = 'kegerator'

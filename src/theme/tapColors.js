@@ -1,0 +1,18 @@
+export const tapColors = {
+  primary: '#1890ff',
+  link: '#1890ff',
+  success: '#52c41a',
+  warning: '#faad14',
+  error: '#f5222d',
+  backGround: '#001529',
+  appBackGround: '#f0f2f5',
+  fontSize: '14px',
+  headingColor: 'rgba(0, 0, 0, 0.85)',
+  textColor: 'rgba(0, 0, 0, 0.65)',
+  textColorSecondary : 'rgba(0, 0, 0, .45)',
+  textColorAlt: '#ffffff', 
+  disabledColor : 'rgba(0, 0, 0, .25)',
+  borderRadius: '4px',
+  borderColor: '#d9d9d9',
+  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+}

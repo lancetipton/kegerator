@@ -1,4 +1,4 @@
-const { isStr, get } = require('jsutils')
+const { isStr, get } = require('@ltipton/jsutils')
 
 const build = docker => {
   return ({ tags, ...opts }) => {

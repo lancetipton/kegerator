@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { wordCaps } from 'jsutils'
+import { wordCaps } from '@ltipton/jsutils'
 import { displayName } from 'SVConfig'
 import {
   SimpleList,

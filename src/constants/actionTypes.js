@@ -1,4 +1,4 @@
-import { keyMap } from 'jsutils'
+import { keyMap } from '@ltipton/jsutils'
 
 export const ActionTypes = keyMap(
   [

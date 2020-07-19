@@ -1,5 +1,5 @@
 import { ActionTypes } from 'SVConstants'
-import { get, unset } from 'jsutils'
+import { get, unset } from '@ltipton/jsutils'
 
 const initialState = {
   selected: null,

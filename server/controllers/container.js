@@ -1,4 +1,4 @@
-const { isArr, limbo, checkCall } = require('jsutils')
+const { isArr, limbo, checkCall } = require('@ltipton/jsutils')
 const { errorResponse } = require('../utils/error')
 
 const getContainerData = app => {

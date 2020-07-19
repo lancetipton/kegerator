@@ -1,7 +1,7 @@
 // For mac, may need to symlink docker.sock
 // ln -s ~/Library/Containers/com.docker.docker/Data/docker.sock /var/run/docker.sock
 const serverConfig = require('./app.config.json')
-const { deepMerge, get } = require('jsutils')
+const { deepMerge, get } = require('@ltipton/jsutils')
 let commandsType = process.env.COMMANDS || 'kegerator'
 const nodeEnv = process.env.NODE_ENV || 'development'
 const isServer = typeof window === 'undefined'

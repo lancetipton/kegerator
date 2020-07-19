@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 import { EventTypes } from 'SVConstants'
-import { isFunc } from 'jsutils'
+import { isFunc } from '@ltipton/jsutils'
 import {
   addPeer,
   onConnected,

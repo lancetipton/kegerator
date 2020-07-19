@@ -44,7 +44,7 @@
     "eslint-plugin-react-native": "3.8.1",
     "express": "4.11.1",
     "husky": "4.2.5",
-    "jsutils": "npm:@ltipton/jsutils",
+    "@ltipton/jsutils": "^5.0.0",
     "keg-cli": "https://github.com/simpleviewinc/keg-cli.git",
     "keg-core": "https://github.com/simpleviewinc/keg-core.git#master",
     "lint-staged": "10.2.10",

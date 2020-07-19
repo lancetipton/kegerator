@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { wordCaps, isStr } from 'jsutils'
+import { wordCaps, isStr } from '@ltipton/jsutils'
 import {
   H6,
   Icon,
@@ -8,7 +8,7 @@ import {
 } from 'SVComponents'
 import { useStyles } from 'SVHooks'
 import { useTheme, useThemeHover } from '@simpleviewinc/re-theme'
-import { get } from 'jsutils'
+import { get } from '@ltipton/jsutils'
 import {
   Platform,
   TouchableOpacity,
@@ -22,19 +22,15 @@ const buildStyles = (theme, styles) => {
   return {
     default: {
       main: {
-        opacity: 0.75,
+        // opacity: 0.75,
         cursor: 'pointer',
       },
       row: {
         ...theme.flex.justify.between,
         ...theme.flex.align.center,
-        backgroundColor: theme.colors.surface.primary.colors.dark,
         paddingVertical: (theme.padding.size / 3),
         paddingHorizontal: (theme.padding.size),
-        borderTopWidth: 1,
-        borderTopColor: theme.colors.palette.black02,
-        borderBottomWidth: 1,
-        borderBottomColor: theme.colors.palette.black02,
+        backgroundColor: theme.tapColors.primary,
         ...get(styles, 'row.default'),
       },
       title: {

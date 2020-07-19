@@ -8,8 +8,8 @@ import { Provider } from 'react-redux'
 import { getStore } from 'SVStore'
 import { initAppAction } from 'SVActions'
 import { Router } from 'SVComponents/router'
-import { SafeAreaView, WebSocket } from 'SVComponents'
-import { checkCall, get } from 'jsutils'
+import { SafeAreaView, WebSocket, View } from 'SVComponents'
+import { checkCall, get } from '@ltipton/jsutils'
 import { ContainerRoutes } from 'SVNavigation/containerRoutes'
 import { keg } from 'SVConfig'
 import { getHistory } from 'SVNavigation'
@@ -29,7 +29,7 @@ const App = props => {
 
   return (
     init && (
-      <>
+      <View data-class='root-main' style={ theme.app.main }>
         <StatusBar barStyle={'default'} />
         <Router history={getHistory()}>
           <SafeAreaView>
@@ -43,7 +43,7 @@ const App = props => {
             </Provider>
           </SafeAreaView>
         </Router>
-      </>
+      </View>
     )
   )
 }

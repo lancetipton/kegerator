@@ -1,10 +1,10 @@
 import { View } from 'SVComponents'
 import { useStyles } from 'SVHooks'
-import { get } from 'jsutils'
+import { get } from '@ltipton/jsutils'
 import React from 'react'
 
 const buildStyles = (theme, styles) => {
-  styles.main.backgroundColor = get(theme, 'colors.palette.black03')
+  styles.main.backgroundColor = get(theme, 'tapColors.backGround')
 
   return styles
 }

@@ -1,6 +1,6 @@
 import React, { useState, useLayoutEffect } from 'react'
 import { useTheme } from '@simpleviewinc/re-theme'
-import { isFunc } from 'jsutils'
+import { isFunc } from '@ltipton/jsutils'
 import { noOpObj } from 'SVUtils'
 
 const callBuildStyles = (buildStyles, theme, styles=noOpObj, props) => {

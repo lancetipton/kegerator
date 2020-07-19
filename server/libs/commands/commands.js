@@ -1,10 +1,10 @@
 const path = require('path')
 const { spawn } = require('child_process')
-const { uuid, get } = require('jsutils')
+const { uuid, get } = require('@ltipton/jsutils')
 const { EventTypes } = require('KegSConst')
 const rootDir = require('KegRoot')
 const { commands, filters } = require('./loadCommands')
-const { isKegCLICommand, kegCLIMessage } = require('./keg')
+const { isKegCLICommand, kegCLIMessage } = require('./checkKegCLI')
 
 const spawnOpts = {
   gid: process.getgid(),
@@ -193,6 +193,10 @@ const runCmd = (SocketManager, socket, message) => {
   }
 }
 
-module.exports = (socket, SocketManager) => {
+const validateRunCmd = (socket, SocketManager) => {
   socket.on(EventTypes.RUN_CMD, message => SocketManager.checkAuth(socket, message, runCmd))
 }
+
+validateRunCmd.runCmd = runChildSpawn
+
+module.exports = validateRunCmd

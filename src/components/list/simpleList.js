@@ -1,6 +1,6 @@
 import React from 'react'
 import { useStyles } from 'SVHooks'
-import { get } from 'jsutils'
+import { get } from '@ltipton/jsutils'
 import { useTheme } from '@simpleviewinc/re-theme'
 import {
   Grid,
