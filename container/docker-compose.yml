@@ -31,17 +31,10 @@ services:
     container_name: ${CONTAINER_NAME}
     environment:
       - ENV
-      - DOC_APP_PATH
-      - DOC_CLI_PATH
-      - DOC_CORE_PATH
-      - DOC_COMPONENTS_PATH
-      - DOC_RESOLVER_PATH
-      - DOC_RETHEME_PATH
+      - DOC_APP_PATH=/keg/tap
+      - DOC_CLI_PATH=/keg/keg-cli
+      - KEG_GLOBAL_CONFIG=/keg/.kegConfig/cli.config.json
       - GIT_CLI_URL
-      - GIT_CORE_URL
-      - GIT_COMPONENTS_URL
-      - GIT_RETHEME_URL
-      - GIT_RESOLVER_URL
       - GIT_APP_URL
       - KEG_EXEC_CMD
       - KEG_NM_INSTALL
@@ -53,5 +46,5 @@ services:
       - ${SOCKET_PORT}:${SOCKET_PORT}
       - 80:${DOC_APP_PORT}
     volumes:
-      - ${KEG_CLI_GLOBAL}:/root/.kegConfig
-      - ${CLI_PATH}:/root/keg/keg-cli
+      - ${KEG_CLI_GLOBAL}:/keg/.kegConfig
+      - ${CLI_PATH}:/keg/keg-cli
