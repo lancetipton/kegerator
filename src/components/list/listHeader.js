@@ -25,22 +25,24 @@ const buildStyles = (theme, styles) => {
         // opacity: 0.75,
         cursor: 'pointer',
       },
-      row: {
-        ...theme.flex.justify.between,
-        ...theme.flex.align.center,
-        paddingVertical: (theme.padding.size / 3),
-        paddingHorizontal: (theme.padding.size),
-        backgroundColor: theme.tapColors.primary,
-        ...get(styles, 'row.default'),
-      },
-      title: {
-        color: theme.colors.palette.gray01,
-        fontWeight: '700',
-        ...get(styles, 'title.default'),
-      },
-      toggle: {
-        color: theme.colors.palette.gray01,
-        ...get(styles, 'toggle.default'),
+      content: {
+        main: {
+          ...theme.flex.justify.between,
+          ...theme.flex.align.center,
+          paddingVertical: (theme.padding.size / 3),
+          paddingHorizontal: (theme.padding.size),
+          backgroundColor: theme.tapColors.primary,
+          ...get(styles, 'row.default'),
+        },
+        title: {
+          color: theme.colors.palette.gray01,
+          fontWeight: '700',
+          ...get(styles, 'title.default'),
+        },
+        toggle: {
+          color: theme.colors.palette.gray01,
+          ...get(styles, 'toggle.default'),
+        }
       }
     },
     hover: {
@@ -83,11 +85,11 @@ export const ListHeader = props => {
       onPress={ onHeaderPress }
     >
     <Row
-      style={ listStyles.row }
+      style={ listStyles.content.main }
       data-class="list-header-row"
     >
       <H6
-        style={ listStyles.title }
+        style={ listStyles.content.title }
         data-class="list-header-title"
       >
         { wordCaps(title) }

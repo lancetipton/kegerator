@@ -9,6 +9,13 @@ keg_message(){
   return
 }
 
+# Adds the keg-cli to the ~/.bashrc
+keg_setup_bashrc(){
+  echo "export KEG_IN_DOCKER=true" >> ~/.bashrc
+  echo "source /keg/keg-cli/keg" >> ~/.bashrc
+  echo "export GIT_KEY=\"$(node /keg/keg-cli/scripts/cli/getGitKey.js)\"" >> ~/.bashrc
+}
+
 # Overwrite the default cli, core, tap paths with passed in ENVs
 keg_set_container_paths(){
 

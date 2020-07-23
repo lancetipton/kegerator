@@ -99,4 +99,4 @@ WORKDIR $DOC_APP_PATH
 
 # Run the start script
 # Dont use the array syntax, so we have access to the DOC_CLI_PATH ENV
-CMD /bin/sh $DOC_APP_PATH/container/run.sh
+CMD /bin/bash $DOC_APP_PATH/container/run.sh
