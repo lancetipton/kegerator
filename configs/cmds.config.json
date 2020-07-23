@@ -3,8 +3,6 @@
     "types": [
       "keg"
     ],
-    "commands": {
-
-    }
+    "commands": {}
   }
 }

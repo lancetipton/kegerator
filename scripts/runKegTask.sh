@@ -1,6 +1,10 @@
 #!/usr/bin/env
 
-source ./node_modules/keg-cli/keg
+export KEG_ROOT_DIR=/keg
+export KEG_NO_MACHINE=true
+export KEG_NON_INTERACTIVE=true
+export KEG_GLOBAL_CONFIG="$(node /keg/tap/scripts/kegConfig.js)"
+. /keg/keg-cli/keg
 
 keg_run_task(){
   if [[ "$1" == "keg" ]]; then

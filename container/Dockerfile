@@ -46,9 +46,12 @@ COPY *.lock $DOC_APP_PATH/
 RUN cd $DOC_APP_PATH; \
     echo "@simpleviewinc:registry=https://npm.pkg.github.com/" > .npmrc; \
     echo "//npm.pkg.github.com/:_authToken=${GIT_KEY}" >> .npmrc; \
-    yarn setup; \
-    yarn cache clean; \
-    rm -f .npmrc
+    yarn install --ignore-engines; \
+    cd $DOC_APP_PATH/node_modules/keg-core; \
+    yarn install --ignore-engines; \
+    cd $DOC_APP_PATH; \
+    mkdir -p $DOC_APP_PATH/node_modules/@expo; \
+    ln -s $DOC_APP_PATH/node_modules/keg-core/node_modules/@expo/vector-icons $DOC_APP_PATH/node_modules/@expo/vector-icons
 
 # ------- New Build Stage ------- #
 
@@ -97,6 +100,8 @@ EXPOSE 60710
 # Set the current directory to tap repo
 WORKDIR $DOC_APP_PATH
 
+SHELL [ "/bin/bash", "-c" ]
+
 # Run the start script
 # Dont use the array syntax, so we have access to the DOC_CLI_PATH ENV
-CMD /bin/bash $DOC_APP_PATH/container/run.sh
+CMD source $DOC_APP_PATH/container/run.sh

@@ -9,12 +9,6 @@ keg_message(){
   return
 }
 
-# Adds the keg-cli to the ~/.bashrc
-keg_setup_bashrc(){
-  echo "export KEG_IN_DOCKER=true" >> ~/.bashrc
-  echo "source /keg/keg-cli/keg" >> ~/.bashrc
-  echo "export GIT_KEY=\"$(node /keg/keg-cli/scripts/cli/getGitKey.js)\"" >> ~/.bashrc
-}
 
 # Overwrite the default cli, core, tap paths with passed in ENVs
 keg_set_container_paths(){
@@ -42,6 +36,7 @@ keg_add_git_key(){
 keg_remove_git_key(){
   git config --global url.https://github.com/.insteadOf url.https://$GIT_KEY@github.com/
   rm -rf .npmrc
+  unset GIT_KEY
 }
 
 # Runs yarn install at run time
@@ -64,8 +59,21 @@ keg_run_tap_yarn_setup(){
 
 }
 
+keg_setup_cli_config(){
+
+  export KEG_ROOT_DIR=/keg
+  export KEG_NO_MACHINE=true
+  export KEG_NON_INTERACTIVE=true
+  export KEG_GLOBAL_CONFIG="$(node $TAP_PATH/scripts/kegConfig.js)"
+
+}
+
 # Runs a Tap
 keg_run_the_tap(){
+
+  if [[ "$1" == "skip" ]]; then
+    return
+  fi
 
   cd $TAP_PATH
 
@@ -84,5 +92,8 @@ keg_set_container_paths
 # Run yarn setup for any extra node_modules to be installed
 keg_run_tap_yarn_setup
 
+# Build the cli config for docker
+keg_setup_cli_config
+
 # Start the keg core instance
-keg_run_the_tap
+keg_run_the_tap "$@"

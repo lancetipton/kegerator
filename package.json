@@ -45,7 +45,6 @@
     "express": "4.11.1",
     "husky": "4.2.5",
     "@ltipton/jsutils": "^5.0.0",
-    "keg-cli": "https://github.com/simpleviewinc/keg-cli.git",
     "keg-core": "https://github.com/simpleviewinc/keg-core.git#master",
     "lint-staged": "10.2.10",
     "module-alias": "^2.2.2",
