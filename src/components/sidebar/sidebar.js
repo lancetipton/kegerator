@@ -4,7 +4,10 @@ import { get } from '@ltipton/jsutils'
 import React from 'react'
 
 const buildStyles = (theme, styles) => {
-  styles.main.backgroundColor = get(theme, 'tapColors.backGround')
+  styles.main = {
+    backgroundColor: get(theme, 'tapColors.backGround'),
+    ...styles.main,
+  }
 
   return styles
 }

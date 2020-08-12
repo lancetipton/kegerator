@@ -9,6 +9,7 @@ import {
 } from 'SVComponents'
 import { ActiveScreen } from './screens/activeScreen'
 import { useTheme } from '@simpleviewinc/re-theme'
+import { useSelector, shallowEqual } from 'react-redux'
 
 const commands = {
   docker: {
@@ -48,26 +49,21 @@ const commands = {
   }
 }
 
-const onHeaderPress = (toggled, setToggled) => {
-  return event => setToggled(!toggled)
-}
-
-const onItemPress = (event) => {
-  console.log(event)
-}
+const onHeaderPress = event => {}
+const onItemPress = (event) => {}
 
 export const RootContainer = withAppHeader(displayName, props => {
   const theme = useTheme()
   const containerStyles =  theme.containers.root
 
-  const [ toggled, setToggled ] = useState(null)
-  
+  const tasks = useSelector(({ items }) => (items.tasks || {}), shallowEqual)
+
   return (
     <View style={ containerStyles.main } >
       <Sidebar styles={ containerStyles.sidebar } >
         <SimpleList
-          items={ commands }
-          onHeaderPress={ onHeaderPress(toggled, setToggled) }
+          items={ tasks }
+          onHeaderPress={ onHeaderPress }
           onItemPress={ onItemPress }
         />
       </Sidebar>

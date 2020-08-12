@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useMemo } from 'react'
 import { wordCaps, isStr } from '@ltipton/jsutils'
 import {
   H6,
@@ -6,24 +6,26 @@ import {
   Row,
   View,
 } from 'SVComponents'
-import { useStyles } from 'SVHooks'
+import { useStyles, useToggleAnimate } from 'SVHooks'
 import { useTheme, useThemeHover } from '@simpleviewinc/re-theme'
 import { get } from '@ltipton/jsutils'
 import {
+  Animated,
   Platform,
   TouchableOpacity,
   TouchableNativeFeedback,
 } from 'react-native'
 
-const TouchableWithFeedback =
-  Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity
+const TouchableWithFeedback = Platform.OS === 'android'
+  ? TouchableNativeFeedback
+  : TouchableOpacity
 
 const buildStyles = (theme, styles) => {
   return {
     default: {
       main: {
-        // opacity: 0.75,
         cursor: 'pointer',
+        backgroundColor: theme.tapColors.headerBackground,
       },
       content: {
         main: {
@@ -31,7 +33,6 @@ const buildStyles = (theme, styles) => {
           ...theme.flex.align.center,
           paddingVertical: (theme.padding.size / 3),
           paddingHorizontal: (theme.padding.size),
-          backgroundColor: theme.tapColors.primary,
           ...get(styles, 'row.default'),
         },
         title: {
@@ -40,9 +41,16 @@ const buildStyles = (theme, styles) => {
           ...get(styles, 'title.default'),
         },
         toggle: {
-          color: theme.colors.palette.gray01,
-          ...get(styles, 'toggle.default'),
-        }
+          main: {
+            color: theme.colors.palette.gray01,
+            ...get(styles, 'toggle.default'),
+          }
+        },
+      }
+    },
+    active: {
+      main: {
+        opacity: 0.5,
       }
     },
     hover: {
@@ -56,33 +64,76 @@ const buildStyles = (theme, styles) => {
         ...get(styles, 'title.hover'),
       },
       toggle: {
-        ...get(styles, 'toggle.hover'),
+        main: {
+          ...get(styles, 'toggle.hover'),
+        }
       }
     }
   }
 
 }
 
-export const ListHeader = props => {
-
-  const { onHeaderPress, styles, title, icon } = props
-  const theme = useTheme()
-  const mergeStyles = useStyles(styles, props, buildStyles)
-  const [ rowRef, listStyles ] = useThemeHover(mergeStyles.default, mergeStyles.hover)
-
-  const iconProps = {
+const buildIconProps = (icon, theme) => {
+  return {
     name: 'chevron-down',
     color: theme.colors.palette.gray01,
     size: 20,
     ...(icon ? isStr(icon) ? { name: icon } : icon : null)
   }
+}
+
+const noAnimate = (toggled, current, { down, up }) => (
+  !toggled && current === down) || (toggled && current === up
+)
+
+const HeaderIcon = ({ icon, styles, theme, toggled }) => {
+
+  const iconProps = useMemo(
+    () => buildIconProps(icon, theme),
+    [ icon, theme ]
+  )
+
+  const { animation } = useToggleAnimate({
+    toggled,
+    values: { from: 0, to: 1 },
+    config: { duration: 400 }
+  })
+
+  return (
+    <Animated.View 
+      data-class='list-header-icon'
+      style={[
+        get(styles, 'icon.animate'),
+        {
+          transform: [{
+            rotate: animation.interpolate({
+              inputRange: [0, 1],
+              outputRange: ['0deg', '180deg']
+            }) 
+          }]
+        }
+      ]}
+    >
+      <Icon { ...iconProps } styles={ styles } />
+    </Animated.View>
+  )
+
+}
+
+export const ListHeader = props => {
+
+  const { onPress, styles, title, icon, toggled } = props
+  const theme = useTheme()
+  const mergeStyles = useStyles(styles, props, buildStyles)
+  const [ rowRef, listStyles ] = useThemeHover(mergeStyles.default, mergeStyles.hover)
 
   return (
     <TouchableWithFeedback
       data-class="list-header-main"
+      activeOpacity={ get(mergeStyles, 'active.main.opacity') }
       ref={ rowRef }
       style={ listStyles.main }
-      onPress={ onHeaderPress }
+      onPress={ onPress }
     >
     <Row
       style={ listStyles.content.main }
@@ -94,7 +145,12 @@ export const ListHeader = props => {
       >
         { wordCaps(title) }
       </H6>
-      <Icon { ...iconProps } />
+      <HeaderIcon
+        icon={ icon }
+        styles={ listStyles.toggle }
+        theme={ theme }
+        toggled={ toggled }
+      />
     </Row>
   </TouchableWithFeedback>
   )

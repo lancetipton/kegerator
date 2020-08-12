@@ -7,7 +7,7 @@ import {
   onFail,
   onMessage,
   peerDisconnect,
-  setCommands,
+  setTasks,
   setId,
   toggleIsRunning,
 } from 'SVActions'
@@ -54,11 +54,9 @@ class SocketService {
     // EventTypes.SET_ID is called directly after the Auth token
     // You can assume at this point, the user is authorized
     this.socket.on(EventTypes.SET_ID, formatEvt(message => {
-      console.log(`---------- message ----------`)
-      console.log(message)
-      // onConnected(message)
-      // setId(message)
-      // setCommands(message)
+      onConnected(message)
+      setTasks(message)
+      setId(message)
     }))
 
     // Add / Remove peer users, may be used later

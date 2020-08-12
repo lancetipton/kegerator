@@ -9,10 +9,10 @@ import { kegComponentsTheme } from 'SVTheme/kegComponentsTheme'
 export const theme = deepMerge(
   kegComponentsTheme,
   containers,
-  transition,
   {
     app,
     appHeader,
+    transition,
     tapColors
   },
 )

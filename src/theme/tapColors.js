@@ -15,4 +15,5 @@ export const tapColors = {
   borderRadius: '4px',
   borderColor: '#d9d9d9',
   boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
+  headerBackground: '#025bae',
 }

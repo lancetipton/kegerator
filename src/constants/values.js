@@ -29,7 +29,7 @@ import { deepFreeze } from '@ltipton/jsutils'
 /** @type {Values} */
 export const Values = deepFreeze({
   CATEGORIES: {
-
+    TASKS: 'tasks',
   },
 
   SUB_CATEGORIES: {

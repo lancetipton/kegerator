@@ -14,6 +14,7 @@ export const FlatList = props =>  {
 
   return (
     <FlatListRN
+      data-class='flat-list'
       keyExtractor={keyExtractor}
       data={items}
       renderItem={renderItem}
